@@ -4,7 +4,6 @@ from .models import Pokemon
 from .schema import PokemonSchema
 from random import randint
 
-
 Base.metadata.create_all(bind=engine)
 
 def gerar_numero_aleatorio():
@@ -12,7 +11,6 @@ def gerar_numero_aleatorio():
 
 def fetch_pokemon_data(pokemon_id: int):
     response = requests.get(f"https://pokeapi.co/api/v2/pokemon/{pokemon_id}")
-    print(response)
     if response.status_code == 200:
         data = response.json()
         types = ', '.join(type['type']['name'] for type in data['types'])
